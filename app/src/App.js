@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getProducts, getProduct } from './service';
+import { getProducts, getProduct, removeProduct } from './service';
 
 class App extends Component {
 constructor() {
@@ -33,6 +33,12 @@ getProduct(id) {
   })
 }
 
+removeProduct(id) {
+  console.log(id)
+  removeProduct(id).then(() => {
+    getProducts()
+  })
+}
 
 
 
@@ -40,6 +46,7 @@ getProduct(id) {
         const products = this.state.products.map((product, i) => (
             <ul key={i}>
                 <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3>
+                <div onClick={() => this.removeProduct(product.id)}>X</div>
             </ul>
         ))
     return (
