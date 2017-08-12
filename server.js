@@ -19,8 +19,8 @@ const db = low('db.json', {
 
 // Routes
 // GET /allProducts
-app.get('/allProducts', (req, res) => {
-  const allProducts = db.get('allProducts')
+app.get('/Products', (req, res) => {
+  const allProducts = db.get('Products')
     .value()
   res.send(allProducts)
 })
@@ -28,7 +28,7 @@ app.get('/allProducts', (req, res) => {
 
 // GET /product/:id
 app.get('/product/:id', (req, res) => {
-  const product = db.get('allProducts')
+  const product = db.get('Products')
     .find({ id: Number(req.params.id) })
     .value()
   res.send(product)
@@ -37,7 +37,7 @@ app.get('/product/:id', (req, res) => {
 
 // DELETE /product/:id
 app.delete('/product/:id', (req, res) => {
-    const productDeleted = db.get('allProducts')
+    const productDeleted = db.get('Products')
     .remove({ id: Number(req.params.id) })
     .write()
     res.send(productDeleted)
@@ -46,22 +46,16 @@ app.delete('/product/:id', (req, res) => {
 // PUT
 
 app.put('/updateProduct', (req, res) => {
-    db.get('allProducts')
+    db.get('Products')
     .find({ id: Number(req.body.id) })
    .assign({item: req.body.item})
    .write();
 })
 
-app.delete('/remove', (req, res) => {
-    db.get('allProducts')
-    .remove(null)
-    .write()
-})
 
-
-// POST /allProducts
-app.post('/allProducts', (req, res) => {
-  const added = db.get('allProducts')
+// POST /Products
+app.post('/Products', (req, res) => {
+  const added = db.get('Products')
   .push({ id: req.body.id, item: req.body.item})
   .last()
   .write()
@@ -71,7 +65,7 @@ app.post('/allProducts', (req, res) => {
 
 
 // Init
-// db.defaults({ allProducts: [{item: 'Sweater', id: 1}, {item: 'Jelly Shoes', id: 2 }, {item: 'WindBreaker', id: 3}] })
+// db.defaults({ Products: [{item: 'Sweater', id: 1}, {item: 'Jelly Shoes', id: 2 }, {item: 'WindBreaker', id: 3}] })
 //   .write()
 //   .then(() => {
     app.listen(4004, () => console.log('Server is listening'))

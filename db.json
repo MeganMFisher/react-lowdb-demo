@@ -77,5 +77,23 @@
       "id": 4,
       "item": "overalls"
     }
+  ],
+  "Products": [
+    {
+      "item": "hat",
+      "id": 1
+    },
+    {
+      "item": "WindBreaker",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "item": "overalls"
+    },
+    {
+      "id": 2,
+      "item": "Jelly Shoes"
+    }
   ]
 }
