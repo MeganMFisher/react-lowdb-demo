@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getProducts, getProduct, removeProduct } from './service';
+import { getProducts, getProduct, removeProduct, addProduct } from './service';
 
 class App extends Component {
 constructor() {
@@ -9,15 +9,19 @@ constructor() {
 
   this.state = {
     products: [],
-    product: ''
+    product: '',
+    newProduct: ''
   }
 
   this.getProduct = this.getProduct.bind(this)
+  this.addProduct = this.addProduct.bind(this)
+  this.sendProduct = this.sendProduct.bind(this)
 }
 
 componentDidMount() {
     getProducts().then(products => {
       this.setState({
+        // products: [...this.state.products, res]
         products: products
       })
       console.log(this.state.products)
@@ -40,7 +44,24 @@ removeProduct(id) {
   })
 }
 
+addProduct(e) {
+  console.log(e.target.value)
+    this.setState({
+      newProduct: e.target.value
+    })
+    console.log(this.state.newProduct)
+}
 
+sendProduct() {
+  var obj = {
+    item: this.state.newProduct,
+    id: this.state.products.length + 1
+  }
+  console.log(obj)
+  addProduct(obj).then(() => {
+    getProducts()
+  })
+}
 
   render() {
         const products = this.state.products.map((product, i) => (
@@ -57,7 +78,8 @@ removeProduct(id) {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React lowdb Demo</h2>
         </div>
-           <input /> 
+        <input onChange={ this.addProduct } value={ this.state.newProduct }/>
+        <button onClick={ this.sendProduct }>Send</button>
 
           { products }
 
