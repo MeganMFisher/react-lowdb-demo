@@ -55,11 +55,10 @@ app.put('/updateProduct', (req, res) => {
 // POST /allProducts
 app.post('/allProducts', (req, res) => {
   const added = db.get('allProducts')
-    .push(req.body)
-    .last()
-    .assign({ id: 4 })
-    .write()
-    .then(post => res.send(post))
+  .push({ id: 4, item: 'shirt'})
+  .last()
+  .write()
+  .then(post => res.send(added))
 })
 
 
