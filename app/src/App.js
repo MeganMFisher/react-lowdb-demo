@@ -84,9 +84,7 @@ sendProduct() {
         </div>
         <input onChange={ this.addProduct } value={ this.state.newProduct }/>
         <button onClick={ this.sendProduct }>Send</button>
-
           { products }
-
            <h1>{ this.state.product.item }
           </h1> 
       </div>
