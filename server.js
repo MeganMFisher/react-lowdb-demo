@@ -13,11 +13,10 @@ const db = low('db.json', {
 
 
 // Routes
-// GET /products
+// GET /allProducts
 app.get('/allProducts', (req, res) => {
   const allProducts = db.get('allProducts')
     .value()
-    console.log(allProducts)
   res.send(allProducts)
 })
 
@@ -30,6 +29,13 @@ app.get('/product/:id', (req, res) => {
   res.send(product)
 })
 
+
+app.delete('/product/:id', (req, res) => {
+    const productDeleted = db.get('allProducts')
+    .remove({ id: Number(req.params.id) })
+    .value()
+    res.send(productDeleted)
+})
 
 // POST /posts
 app.post('/allProducts', (req, res) => {
