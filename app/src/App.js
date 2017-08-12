@@ -11,13 +11,15 @@ constructor() {
     products: [],
     product: '',
     newProduct: '',
-    editInput: false
+    editInput: false,
+    editProduct: ''
   }
 
   this.getProduct = this.getProduct.bind(this)
   this.addProduct = this.addProduct.bind(this)
   this.sendProduct = this.sendProduct.bind(this)
   this.editClick = this.editClick.bind(this)
+  this.editProduct = this.editProduct.bind(this)
 }
 
 componentDidMount() {
@@ -85,12 +87,37 @@ editClick() {
   }
 }
 
+editProduct(e) {
+    this.setState({
+      editProduct: e.target.value
+    })
+}
+
+sendEditProduct(e) {
+  var obj = {
+    item: this.state.editProduct,
+    id: e
+  }
+console.log(obj)
+  updateProduct(obj).then(() => {
+    getProducts().then(products => {
+      this.setState({
+        products: products
+      })
+    })
+    this.setState({
+    editProduct: ''
+  })
+  })
+}
+
+
   render() {
         const products = this.state.products.map((product, i) => (
           <div key={i} className='productsContainer'>
             <ul className='products'>
                 { !this.state.editInput ? <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3> : null }
-                { this.state.editInput ? <div> <input /> <button>Change</button> </div>: null }
+                { this.state.editInput ? <div> <input onChange={ this.editProduct }/> <button onClick={() => this.sendEditProduct(product.id)}>Change</button> </div>: null }
                 <button onClick={ this.editClick }>Edit</button>
                 <button onClick={() => this.removeProduct(product.id)}>Delete</button>
             </ul>
@@ -102,7 +129,7 @@ editClick() {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React lowdb Demo</h2>
         </div>
-        <input onChange={ this.addProduct } value={ this.state.newProduct }/>
+        <input className='topInput' onChange={ this.addProduct } value={ this.state.newProduct }/>
         <button onClick={ this.sendProduct }>Send</button>
           { products }
            <h1>{ this.state.product.item }

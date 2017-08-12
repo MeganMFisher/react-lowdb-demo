@@ -1,5 +1,6 @@
 body {
   letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .App {
@@ -27,8 +28,8 @@ body {
   to { transform: rotate(360deg); }
 }
 
-input {
-   margin-top: 20px; 
+.topInput {
+    margin-top: 20px;  
 }
 
 .productsContainer {
@@ -44,7 +45,6 @@ input {
   display: flex;
   width: 500px; 
   justify-content: space-around;
-  text-transform: uppercase;
   color: #5798ad;
 }
 

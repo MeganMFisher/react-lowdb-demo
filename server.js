@@ -47,10 +47,12 @@ app.delete('/product/:id', (req, res) => {
 
 // PUT /updateProduct
 app.put('/updateProduct', (req, res) => {
+    console.log(req.body)
     db.get('Products')
     .find({ id: Number(req.body.id) })
    .assign({item: req.body.item})
-   .write();
+   .write()
+   res.send('updated')
 })
 
 
