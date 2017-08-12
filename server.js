@@ -1,5 +1,6 @@
 const express = require('express')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
+const cors = require('cors')
 const low = require('lowdb')
 const fileAsync = require('lowdb/lib/storages/file-async')
 
@@ -9,6 +10,7 @@ app.use('/', express.static('public'));   // serve static files
 
 app.use(bodyParser.json()); // support json encoded bodies, needed por post x-www-form-urlencoded to work
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(cors())
 
 // Start database using file-async storage
 // For ease of use, read is synchronous
@@ -43,8 +45,7 @@ app.delete('/product/:id', (req, res) => {
     res.send(productDeleted)
 })
 
-// PUT
-
+// PUT /updateProduct
 app.put('/updateProduct', (req, res) => {
     db.get('Products')
     .find({ id: Number(req.body.id) })
@@ -62,6 +63,11 @@ app.post('/Products', (req, res) => {
   .then(post => res.send(added))
 })
 
+// RESET DATABASE /reset
+app.delete('/reset', (req, res) => {
+    db.set('Products', [{item: 'Sweater', id: 1}, {item: 'Jelly Shoes', id: 2 }, {item: 'WindBreaker', id: 3}])
+    .write()
+})
 
 
 // Init

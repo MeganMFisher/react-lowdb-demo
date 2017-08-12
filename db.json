@@ -80,20 +80,16 @@
   ],
   "Products": [
     {
-      "item": "hat",
+      "item": "Sweater",
       "id": 1
+    },
+    {
+      "item": "Jelly Shoes",
+      "id": 2
     },
     {
       "item": "WindBreaker",
       "id": 3
-    },
-    {
-      "id": 4,
-      "item": "overalls"
-    },
-    {
-      "id": 2,
-      "item": "Jelly Shoes"
     }
   ]
 }
