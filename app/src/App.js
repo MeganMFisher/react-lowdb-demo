@@ -64,6 +64,9 @@ sendProduct() {
       })
     })
   })
+  this.setState({
+    newProduct: ''
+  })
   }
 }
 

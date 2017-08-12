@@ -90,6 +90,18 @@
     {
       "item": "WindBreaker",
       "id": 3
+    },
+    {
+      "id": 4,
+      "item": "Mom Jeans"
+    },
+    {
+      "id": 5,
+      "item": "Fanny Pack"
+    },
+    {
+      "id": 6,
+      "item": "Turtleneck "
     }
   ]
 }
