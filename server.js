@@ -30,6 +30,7 @@ app.get('/product/:id', (req, res) => {
 })
 
 
+// DELETE /product/:id
 app.delete('/product/:id', (req, res) => {
     const productDeleted = db.get('allProducts')
     .remove({ id: Number(req.params.id) })
@@ -37,9 +38,18 @@ app.delete('/product/:id', (req, res) => {
     res.send(productDeleted)
 })
 
-// POST /posts
+// PUT
+
+app.put('/updateProduct', (req, res) => {
+    db.put('allProducts')
+    .find()({color:'red'})
+    .value()
+})
+
+
+
+// POST /allProducts
 app.post('/allProducts', (req, res) => {
-    console.log(req.body)
   const added = db.get('allProducts')
     .push(req.body)
     .last()
