@@ -17,19 +17,19 @@ const db = low('db.json', {
 app.get('/allProducts', (req, res) => {
   const allProducts = db.get('allProducts')
     .value()
-    // console.log(allProducts)
+    console.log(allProducts)
   res.send(allProducts)
 })
 
 
 // GET /product/:id
-// app.get('/product/:id', (req, res) => {
-//   const product = db.get('allProducts')
-//     .find({ id: req.params.id })
-//     .value()
-// console.log(product)
-//   res.send(product)
-// })
+app.get('/product/:id', (req, res) => {
+  const product = db.get('allProducts')
+    .find({ id: Number(req.params.id) })
+    .value()
+  res.send(product)
+})
+
 
 // POST /posts
 app.post('/allProducts', (req, res) => {
