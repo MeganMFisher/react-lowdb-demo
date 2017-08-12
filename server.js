@@ -41,9 +41,13 @@ app.delete('/product/:id', (req, res) => {
 // PUT
 
 app.put('/updateProduct', (req, res) => {
-    db.put('allProducts')
-    .find()({color:'red'})
-    .value()
+    console.log(req.body)
+    db.get('allProducts')
+    .find({ id: 1 })
+   .assign({item: "overalls"})
+//     .find({ id: Number(req.body.id) })
+//    .assign({item: req.body.item})
+   .value();
 })
 
 
