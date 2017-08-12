@@ -106,7 +106,8 @@ console.log(obj)
       })
     })
     this.setState({
-    editProduct: ''
+    editProduct: '',
+    editInput: false
   })
   })
 }
