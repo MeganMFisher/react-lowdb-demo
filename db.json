@@ -1,0 +1,32 @@
+{
+  "products": [
+    "Sweater",
+    "Jelly Shoes",
+    "WindBreaker"
+  ],
+  "posts": [],
+  "allProducts": [
+    {
+      "item": "Sweater",
+      "id": 1
+    },
+    {
+      "item": "Jelly Shoes",
+      "id": 2
+    },
+    {
+      "item": "WindBreaker",
+      "id": 3
+    },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ]
+}
