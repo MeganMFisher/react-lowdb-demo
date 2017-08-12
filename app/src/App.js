@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getProducts } from './service';
+import { getProducts, getProduct } from './service';
 
 class App extends Component {
 constructor() {
   super()
 
   this.state = {
-    products: []
+    products: [],
+    product: ''
   }
+
+  this.getProduct = this.getProduct.bind(this)
 }
 
 componentDidMount() {
@@ -21,11 +24,22 @@ componentDidMount() {
     })
 }
 
+getProduct(id) {
+  getProduct(id).then(product => {
+    this.setState({
+      product: product
+    })
+    console.log(this.state.product)
+  })
+}
+
+
+
 
   render() {
         const products = this.state.products.map((product, i) => (
             <ul key={i}>
-                <h3>{ product.item }</h3>
+                <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3>
             </ul>
         ))
     return (
@@ -35,6 +49,9 @@ componentDidMount() {
           <h2>React lowdb Demo</h2>
         </div>
           { products }
+
+           <h1>{ this.state.product.item }
+          </h1> 
       </div>
     );
   }
