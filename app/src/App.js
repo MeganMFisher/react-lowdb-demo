@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getProducts, getProduct, removeProduct, addProduct } from './service';
+import { getProducts, getProduct, removeProduct, addProduct, updateProduct } from './service';
 
 class App extends Component {
 constructor() {
@@ -24,7 +24,6 @@ componentDidMount() {
         // products: [...this.state.products, res]
         products: products
       })
-      console.log(this.state.products)
     })
 }
 
@@ -33,12 +32,10 @@ getProduct(id) {
     this.setState({
       product: product
     })
-    console.log(this.state.product)
   })
 }
 
 removeProduct(id) {
-  console.log(id)
   removeProduct(id).then(() => {
     getProducts().then(products => {
       this.setState({
@@ -49,11 +46,9 @@ removeProduct(id) {
 }
 
 addProduct(e) {
-  console.log(e.target.value)
     this.setState({
       newProduct: e.target.value
     })
-    console.log(this.state.newProduct)
 }
 
 sendProduct() {
