@@ -14,6 +14,5 @@ export function removeProduct(id) {
 }
 
 export function addProduct(obj) {
-    console.log(obj)
     return axios.post('http://localhost:4004/Products', obj).then(res => res.data)
 }

@@ -59,7 +59,12 @@ sendProduct() {
   }
   console.log(obj)
   addProduct(obj).then(() => {
-    getProducts()
+    getProducts().then(products => {
+      this.setState({
+        products: products
+      })
+      console.log(this.state.products)
+    })
   })
 }
 
