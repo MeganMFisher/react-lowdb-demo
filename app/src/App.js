@@ -28,6 +28,7 @@ componentDidMount() {
         // products: [...this.state.products, res]
         products: products
       })
+      console.log(this.state.products)
     })
 }
 
@@ -56,9 +57,14 @@ addProduct(e) {
 }
 
 sendProduct() {
+  var list = this.state.products
+  var num = [];
+  list.map(e => num.push(e.id))
+  var highest = Math.max.apply(null, num)
+
   var obj = {
     item: this.state.newProduct,
-    id: this.state.products.length + 1
+    id: highest + 1
   }
   if(obj.item) {
   addProduct(obj).then(() => {

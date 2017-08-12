@@ -4,6 +4,7 @@ const cors = require('cors')
 const low = require('lowdb')
 const fileAsync = require('lowdb/lib/storages/file-async')
 
+
 // Create server
 const app = express()
 app.use('/', express.static('public'));   // serve static files
