@@ -23,13 +23,18 @@ componentDidMount() {
 
 
   render() {
+        const products = this.state.products.map((product, i) => (
+            <ul key={i}>
+                <h3>{ product.item }</h3>
+            </ul>
+        ))
     return (
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React lowdb Demo</h2>
         </div>
-
+          { products }
       </div>
     );
   }
