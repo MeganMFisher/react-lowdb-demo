@@ -42,7 +42,7 @@ input {
 
 .products {
   display: flex;
-  width: 200px; 
+  width: 500px; 
   justify-content: space-around;
   text-transform: uppercase;
   color: #5798ad;

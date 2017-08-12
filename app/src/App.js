@@ -10,12 +10,14 @@ constructor() {
   this.state = {
     products: [],
     product: '',
-    newProduct: ''
+    newProduct: '',
+    editInput: false
   }
 
   this.getProduct = this.getProduct.bind(this)
   this.addProduct = this.addProduct.bind(this)
   this.sendProduct = this.sendProduct.bind(this)
+  this.editClick = this.editClick.bind(this)
 }
 
 componentDidMount() {
@@ -70,12 +72,27 @@ sendProduct() {
   }
 }
 
+editClick() {
+  
+  if(this.state.editInput) {
+    this.setState({
+    editInput: false
+  })
+  } else {
+    this.setState({
+    editInput: true
+  })
+  }
+}
+
   render() {
         const products = this.state.products.map((product, i) => (
           <div key={i} className='productsContainer'>
             <ul className='products'>
-                <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3>
-                <div onClick={() => this.removeProduct(product.id)}>X</div>
+                { !this.state.editInput ? <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3> : null }
+                { this.state.editInput ? <div> <input /> <button>Change</button> </div>: null }
+                <button onClick={ this.editClick }>Edit</button>
+                <button onClick={() => this.removeProduct(product.id)}>Delete</button>
             </ul>
           </div>
         ))
