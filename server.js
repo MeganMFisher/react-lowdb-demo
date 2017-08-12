@@ -34,20 +34,19 @@ app.get('/product/:id', (req, res) => {
 app.delete('/product/:id', (req, res) => {
     const productDeleted = db.get('allProducts')
     .remove({ id: Number(req.params.id) })
-    .value()
+    .write()
     res.send(productDeleted)
 })
 
 // PUT
 
 app.put('/updateProduct', (req, res) => {
-    console.log(req.body)
     db.get('allProducts')
-    .find({ id: 1 })
-   .assign({item: "overalls"})
+    .find({ id: 3 })
+   .assign({item: "over"})
 //     .find({ id: Number(req.body.id) })
 //    .assign({item: req.body.item})
-   .value();
+   .write();
 })
 
 

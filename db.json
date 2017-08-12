@@ -7,15 +7,11 @@
   "posts": [],
   "allProducts": [
     {
-      "item": "Sweater",
+      "item": "over",
       "id": 1
     },
     {
-      "item": "Jelly Shoes",
-      "id": 2
-    },
-    {
-      "item": "WindBreaker",
+      "item": "over",
       "id": 3
     },
     null,
