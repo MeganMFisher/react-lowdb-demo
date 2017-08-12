@@ -44,10 +44,12 @@ removeProduct(id) {
 
   render() {
         const products = this.state.products.map((product, i) => (
-            <ul key={i}>
+          <div key={i} className='productsContainer'>
+            <ul className='products'>
                 <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3>
                 <div onClick={() => this.removeProduct(product.id)}>X</div>
             </ul>
+          </div>
         ))
     return (
       <div className="App">
@@ -55,6 +57,8 @@ removeProduct(id) {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React lowdb Demo</h2>
         </div>
+           <input /> 
+
           { products }
 
            <h1>{ this.state.product.item }
