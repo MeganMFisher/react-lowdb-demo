@@ -40,7 +40,11 @@ getProduct(id) {
 removeProduct(id) {
   console.log(id)
   removeProduct(id).then(() => {
-    getProducts()
+    getProducts().then(products => {
+      this.setState({
+        products: products
+      })
+    })
   })
 }
 
@@ -57,15 +61,15 @@ sendProduct() {
     item: this.state.newProduct,
     id: this.state.products.length + 1
   }
-  console.log(obj)
+  if(obj.item) {
   addProduct(obj).then(() => {
     getProducts().then(products => {
       this.setState({
         products: products
       })
-      console.log(this.state.products)
     })
   })
+  }
 }
 
   render() {
