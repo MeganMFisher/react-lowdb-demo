@@ -6,28 +6,76 @@
   ],
   "posts": [],
   "allProducts": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     {
-      "item": "over",
-      "id": 1
+      "id": 2,
+      "item": "shirt"
     },
     {
-      "item": "over",
-      "id": 3
+      "id": 1,
+      "item": "fannyPack"
     },
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 2,
+      "item": "shirt"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
+    {
+      "id": 3,
+      "item": "sweater"
+    },
+    {
+      "id": 1,
+      "item": "jelly shoes"
+    },
     {
       "id": 4,
-      "item": "shirt"
+      "item": "overalls"
+    },
+    {
+      "id": 4,
+      "item": "overalls"
     }
   ]
 }
