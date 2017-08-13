@@ -125,8 +125,10 @@ console.log(obj)
             <ul className='products'>
                 { !this.state.editInput ? <h3 onClick={() => this.getProduct(product.id)}> { product.item } </h3> : null }
                 { this.state.editInput ? <div> <input onChange={ this.editProduct }/> <button onClick={() => this.sendEditProduct(product.id)}>Change</button> </div>: null }
+                <div className='buttonContainer'>
                 <button onClick={ this.editClick }>Edit</button>
                 <button onClick={() => this.removeProduct(product.id)}>Delete</button>
+                </div>
             </ul>
           </div>
         ))
@@ -137,7 +139,7 @@ console.log(obj)
           <h2>React lowdb Demo</h2>
         </div>
         <input className='topInput' onChange={ this.addProduct } value={ this.state.newProduct }/>
-        <button onClick={ this.sendProduct }>Send</button>
+        <button onClick={ this.sendProduct }>Add Product</button>
           { products }
            <h1>{ this.state.product.item }
           </h1> 

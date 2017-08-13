@@ -84,16 +84,16 @@
       "id": 2
     },
     {
-      "item": "WindBreaker",
-      "id": 3
-    },
-    {
       "id": 4,
       "item": "Mom jeans"
     },
     {
       "id": 5,
       "item": "Sweater"
+    },
+    {
+      "id": 6,
+      "item": "turtleneck"
     }
   ]
 }
