@@ -2,7 +2,11 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const low = require('lowdb')
-const fileAsync = require('lowdb/lib/storages/file-async')
+const FileSync = require('lowdb/adapters/FileSync')
+
+
+const adapter = new FileSync('db.json')
+const db = low(adapter)
 
 
 // Create server
@@ -12,12 +16,6 @@ app.use('/', express.static('public'));   // serve static files
 app.use(bodyParser.json()); // support json encoded bodies, needed por post x-www-form-urlencoded to work
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cors())
-
-// Start database using file-async storage
-// For ease of use, read is synchronous
-const db = low('db.json', {
-  storage: fileAsync
-})
 
 
 // Routes
@@ -58,7 +56,7 @@ app.put('/updateProduct', (req, res) => {
 
 
 // POST /Products
-app.post('/Products', (req, res) => {
+app.post('/products', (req, res) => {
   const added = db.get('Products')
   .push({ id: req.body.id, item: req.body.item})
   .last()
