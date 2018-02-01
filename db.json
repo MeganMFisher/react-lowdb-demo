@@ -80,10 +80,6 @@
   ],
   "Products": [
     {
-      "id": 4,
-      "item": "Mom jeans"
-    },
-    {
       "id": 5,
       "item": "Sweater"
     },
@@ -93,19 +89,7 @@
     },
     {
       "id": 7,
-      "item": "Hello"
-    },
-    {
-      "id": 8,
-      "item": "j"
-    },
-    {
-      "id": 9,
-      "item": "ds"
-    },
-    {
-      "id": 10,
-      "item": "ds"
+      "item": "Jelly Shoes"
     }
   ]
 }

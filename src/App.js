@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { getProducts, getProduct, removeProduct, addProduct, updateProduct } from './service';
+import axios from 'axios';
+
 
 class App extends Component {
 constructor() {
@@ -23,28 +24,28 @@ constructor() {
 }
 
 componentDidMount() {
-    getProducts().then(products => {
+  axios.get('http://localhost:4004/products').then(products => {
       this.setState({
         // products: [...this.state.products, res]
-        products: products
+        products: products.data
       })
       console.log(this.state.products)
     })
 }
 
 getProduct(id) {
-  getProduct(id).then(product => {
+  axios.get('http://localhost:4004/product/' + id).then(product => {
     this.setState({
-      product: product
+      product: product.data
     })
   })
 }
 
 removeProduct(id) {
-  removeProduct(id).then(() => {
-    getProducts().then(products => {
+  axios.delete('http://localhost:4004/product/' + id).then(() => {
+    axios.get('http://localhost:4004/products').then(products => {
       this.setState({
-        products: products
+        products: products.data
       })
     })
   })
@@ -67,10 +68,11 @@ sendProduct() {
     id: highest + 1
   }
   if(obj.item) {
-  addProduct(obj).then(() => {
-    getProducts().then(products => {
+    axios.post('http://localhost:4004/products', obj).then(() => {
+      axios.get('http://localhost:4004/Products').then(products => {
+        console.log(products)
       this.setState({
-        products: products
+        products: products.data
       })
     })
   })
@@ -105,10 +107,10 @@ sendEditProduct(e) {
     id: e
   }
 console.log(obj)
-  updateProduct(obj).then(() => {
-    getProducts().then(products => {
+axios.put('http://localhost:4004/updateProduct', obj).then(() => {
+    axios.get('http://localhost:4004/products').then(products => {
       this.setState({
-        products: products
+        products: products.data
       })
     })
     this.setState({

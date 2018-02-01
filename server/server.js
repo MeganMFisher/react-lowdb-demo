@@ -46,7 +46,6 @@ app.delete('/product/:id', (req, res) => {
 
 // PUT /updateProduct
 app.put('/updateProduct', (req, res) => {
-    console.log(req.body)
     db.get('Products')
     .find({ id: Number(req.body.id) })
    .assign({item: req.body.item})
@@ -57,11 +56,9 @@ app.put('/updateProduct', (req, res) => {
 
 // POST /Products
 app.post('/products', (req, res) => {
-  const added = db.get('Products')
-  .push({ id: req.body.id, item: req.body.item})
-  .last()
+  db.get('Products').push({ id: req.body.id, item: req.body.item})
   .write()
-  .then(post => res.send(added))
+  res.send('added')
 })
 
 // RESET DATABASE /reset
